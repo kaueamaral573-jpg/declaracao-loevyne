@@ -17,7 +17,21 @@ body {
     background: #000;
 }
 
-/* Foto tela cheia */
+/* Botão música */
+#btnMusica {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 30px;
+    font-size: 1rem;
+}
+
+/* Fotos */
 .foto {
     position: relative;
     width: 100vw;
@@ -30,7 +44,6 @@ body {
     object-fit: cover;
 }
 
-/* Texto */
 .foto p {
     position: absolute;
     bottom: 40px;
@@ -45,7 +58,7 @@ body {
     max-width: 90%;
 }
 
-/* Overlay final */
+/* Overlay */
 #overlay {
     display: none;
     position: fixed;
@@ -61,7 +74,6 @@ body {
 #overlay .texto {
     color: white;
     font-size: 1.1rem;
-    max-width: 500px;
 }
 
 /* Corações */
@@ -79,14 +91,16 @@ body {
 
 <body>
 
-<!-- ÁUDIO (não toca sozinho) -->
+<!-- BOTÃO MÚSICA -->
+<button id="btnMusica" onclick="tocarMusica()">▶ Ligar música</button>
+
+<!-- ÁUDIO -->
 <audio id="musica" loop>
     <source src="musica/amor.mp3" type="audio/mpeg">
 </audio>
 
-<!-- PRIMEIRA FOTO (inicia música) -->
 <div class="foto">
-    <img src="fotos/foto3.jpg" onclick="iniciarMusica()">
+    <img src="fotos/foto3.jpg">
     <p>“Com você, até o caos vira lar.”</p>
 </div>
 
@@ -120,7 +134,6 @@ body {
     <p>“Até nos dias difíceis, é você.”</p>
 </div>
 
-<!-- ÚLTIMA FOTO -->
 <div class="foto">
     <img src="fotos/foto10.jpg" onclick="mostrarFinal()">
     <p>“Meu amor, minha vida, minha privada entupida.” ❤️😂</p>
@@ -131,7 +144,6 @@ body {
     <div class="texto">
         <h2>💖 Loevyne 💖</h2>
         <p>
-            Meu amor,<br><br>
             Eu fiz tudo isso porque o amor não cabe só em palavras.<br><br>
             <strong>Eu te amo. Hoje, amanhã e sempre.</strong> ❤️
         </p>
@@ -139,17 +151,18 @@ body {
 </div>
 
 <script>
-let musicaIniciada = false;
-
-function iniciarMusica() {
-    if (!musicaIniciada) {
-        document.getElementById("musica").play();
-        musicaIniciada = true;
-    }
+function tocarMusica() {
+    const audio = document.getElementById("musica");
+    audio.play()
+        .then(() => {
+            document.getElementById("btnMusica").style.display = "none";
+        })
+        .catch(() => {
+            alert("Toque novamente no botão 🎵");
+        });
 }
 
 function mostrarFinal() {
-    iniciarMusica();
     document.getElementById("overlay").style.display = "flex";
 
     if (navigator.vibrate) {
