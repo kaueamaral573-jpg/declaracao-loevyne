@@ -1,79 +1,88 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Nós Dois 💞</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Você ❤️</title>
 
 <style>
-body {
-    background: #fff0f5;
-    font-family: Arial, sans-serif;
-    text-align: center;
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-h1 {
-    color: #ff4f7b;
-    margin-top: 30px;
+body {
+    font-family: Arial, sans-serif;
+    background: #000;
+    overflow-x: hidden;
 }
 
-img {
-    width: 280px;
-    border-radius: 25px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-}
-
+/* Cada foto ocupa a tela inteira */
 .foto {
-    margin: 40px;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
 }
 
-p {
-    font-size: 18px;
-}
-
-/* OVERLAY FINAL */
-#overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
+/* Imagem ocupa toda a tela sem distorcer */
+.foto img {
     width: 100%;
     height: 100%;
-    background: rgba(255, 90, 130, 0.96);
+    object-fit: cover;
+}
+
+/* Texto sobre a imagem */
+.foto p {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 1.3rem;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.45);
+    padding: 12px 18px;
+    border-radius: 14px;
+    max-width: 90%;
+}
+
+/* Overlay final */
+#overlay {
     display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: white;
-    z-index: 9999;
+    padding: 25px;
+    z-index: 999;
 }
 
 #overlay .texto {
-    padding: 25px;
-    max-width: 90%;
-    animation: aparecer 1.2s ease;
+    color: white;
+    font-size: 1.1rem;
+    max-width: 500px;
 }
 
-@keyframes aparecer {
-    from {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
+#overlay h2 {
+    margin-bottom: 15px;
 }
 
-/* CORAÇÕES */
+/* Corações */
 .coracao {
     position: fixed;
-    font-size: 24px;
-    animation: subir 2.5s ease forwards;
+    animation: subir 2.5s linear forwards;
 }
 
 @keyframes subir {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
     to {
-        transform: translateY(-120vh);
+        transform: translateY(-100vh);
         opacity: 0;
     }
 }
@@ -82,61 +91,45 @@ p {
 
 <body>
 
-<h1>💞 Minha Vida 💞</h1>
-
-<audio controls autoplay loop>
-    <source src="Nadson O Ferinha - Sete Bilhões (Clipe Oficial)(M4A_128K).m4a" type="audio/mp4">
-</audio>
-
 <div class="foto">
-<img src="fotos/foto1.jpg">
-<p>“Tinha que ser eu… pra te amar desse jeito.”</p>
+    <img src="fotos/foto3.jpg">
+    <p>“Com você, até o caos vira lar.”</p>
 </div>
 
 <div class="foto">
-<img src="fotos/foto2.jpg">
-<p>“Minha princesa, você é meu tudo.”</p>
+    <img src="fotos/foto4.jpg">
+    <p>“Minha vida ficou melhor quando você chegou.”</p>
 </div>
 
 <div class="foto">
-<img src="fotos/foto3.jpg">
-<p>“Com você, até o caos vira lar.”</p>
+    <img src="fotos/foto5.jpg">
+    <p>“Seu sorriso é meu ponto fraco.”</p>
 </div>
 
 <div class="foto">
-<img src="fotos/foto4.jpg">
-<p>“Minha vida ficou melhor quando você chegou.”</p>
+    <img src="fotos/foto6.jpg">
+    <p>“Eu te escolheria em qualquer universo.”</p>
 </div>
 
 <div class="foto">
-<img src="fotos/foto5.jpg">
-<p>“Seu sorriso é meu ponto fraco.”</p>
+    <img src="fotos/foto7.jpg">
+    <p>“Minha pessoa favorita.”</p>
 </div>
 
 <div class="foto">
-<img src="fotos/foto6.jpg">
-<p>“Eu te escolheria em qualquer universo.”</p>
+    <img src="fotos/foto8.jpg">
+    <p>“Te amar é meu plano diário.”</p>
 </div>
 
 <div class="foto">
-<img src="fotos/foto7.jpg">
-<p>“Minha pessoa favorita.”</p>
+    <img src="fotos/foto9.jpg">
+    <p>“Até nos dias difíceis, é você.”</p>
 </div>
 
+<!-- ÚLTIMA FOTO -->
 <div class="foto">
-<img src="fotos/foto8.jpg">
-<p>“Te amar é meu plano diário.”</p>
-</div>
-
-<div class="foto">
-<img src="fotos/foto9.jpg">
-<p>“Até nos dias difíceis, é você.”</p>
-</div>
-
-<!-- ÚLTIMA FOTO COM FINAL SECRETO -->
-<div class="foto">
-<img src="fotos/foto10.jpg" onclick="mostrarFinal()">
-<p>“Meu amor, minha vida, minha privada entupida.” ❤️😂</p>
+    <img src="fotos/foto10.jpg" onclick="mostrarFinal()">
+    <p>“Meu amor, minha vida, minha privada entupida.” ❤️😂</p>
 </div>
 
 <!-- OVERLAY FINAL -->
@@ -168,12 +161,12 @@ p {
 function mostrarFinal() {
     document.getElementById("overlay").style.display = "flex";
 
-    // vibração no celular
+    // Vibração no celular
     if (navigator.vibrate) {
         navigator.vibrate([200, 100, 200]);
     }
 
-    // explosão de corações
+    // Explosão de corações
     for (let i = 0; i < 35; i++) {
         const c = document.createElement("div");
         c.className = "coracao";
@@ -188,4 +181,4 @@ function mostrarFinal() {
 </script>
 
 </body>
-  </html>
+</html>
