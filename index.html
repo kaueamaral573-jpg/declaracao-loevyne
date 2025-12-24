@@ -18,7 +18,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* FOTO UM POUCO MENOR QUE A TELA */
+/* FOTO */
 .foto {
     position: relative;
     width: 100%;
@@ -26,7 +26,6 @@ body {
     margin: 20px auto;
 }
 
-/* IMAGEM */
 .foto img {
     width: 100%;
     height: 100%;
@@ -34,7 +33,6 @@ body {
     border-radius: 18px;
 }
 
-/* TEXTO */
 .foto p {
     position: absolute;
     bottom: 30px;
@@ -42,14 +40,14 @@ body {
     transform: translateX(-50%);
     color: white;
     font-size: 1.2rem;
-    text-align: center;
     background: rgba(0,0,0,0.45);
     padding: 10px 16px;
     border-radius: 14px;
     max-width: 90%;
+    text-align: center;
 }
 
-/* OVERLAY FINAL */
+/* OVERLAY */
 #overlay {
     display: none;
     position: fixed;
@@ -81,13 +79,11 @@ body {
 </style>
 </head>
 
-<body>
+<body onclick="ativarAudio()">
 
-<!-- 🎵 ÁUDIO (IGUAL AO SEU, SEM BOTÃO) -->
-<audio autoplay loop>
-    <source src="Nadson O Ferinha - Sete Bilhões (Clipe Oficial)(M4A_128K).m4a" type="audio/mp4">
-    <source src="Nadson O Ferinha - Sete Bilhões (Clipe Oficial)(M4A_128K).m4a" type="audio/mp4">
-    Seu navegador não suporta áudio.
+<!-- 🎵 ÁUDIO (FORMA CORRETA PARA CELULAR) -->
+<audio id="musica" autoplay muted loop playsinline>
+    <source src="musica/sete-bilhoes.m4a" type="audio/mp4">
 </audio>
 
 <div class="foto">
@@ -125,43 +121,39 @@ body {
     <p>“Até nos dias difíceis, é você.”</p>
 </div>
 
-<!-- ÚLTIMA FOTO -->
 <div class="foto">
     <img src="fotos/foto10.jpg" onclick="mostrarFinal()">
     <p>“Meu amor, minha vida, minha privada entupida.” ❤️😂</p>
 </div>
 
-<!-- OVERLAY FINAL -->
+<!-- OVERLAY -->
 <div id="overlay">
     <div class="texto">
         <h2>💖 Loevyne 💖</h2>
         <p>
-            Meu amor,<br>
-            minha vida,<br>
-            minha privada entupida. 😂❤️<br><br>
-
-            Eu fiz tudo isso porque às vezes<br>
-            o amor não cabe só em palavras.<br><br>
-
-            Você é meu riso fácil,<br>
-            meu abrigo nos dias difíceis,<br>
-            minha escolha todos os dias.<br><br>
-
-            Obrigado por existir,<br>
-            por ser você,<br>
-            por ser minha.<br><br>
-
+            Meu amor,<br><br>
             <strong>Eu te amo. Hoje, amanhã e sempre.</strong> ❤️
         </p>
     </div>
 </div>
 
 <script>
+let audioAtivo = false;
+
+function ativarAudio() {
+    if (!audioAtivo) {
+        const audio = document.getElementById("musica");
+        audio.muted = false;
+        audio.play();
+        audioAtivo = true;
+    }
+}
+
 function mostrarFinal() {
     document.getElementById("overlay").style.display = "flex";
 
     if (navigator.vibrate) {
-        navigator.vibrate([200, 100, 200]);
+        navigator.vibrate([200,100,200]);
     }
 
     for (let i = 0; i < 35; i++) {
