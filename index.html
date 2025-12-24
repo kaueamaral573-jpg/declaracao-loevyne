@@ -15,13 +15,14 @@
 body {
     background: #000;
     overflow-x: hidden;
+    font-family: Arial, sans-serif;
 }
 
 /* FOTO UM POUCO MENOR QUE A TELA */
 .foto {
     position: relative;
-    width: 100vw;
-    height: 80vh; /* 👈 tamanho ajustável */
+    width: 100%;
+    height: 80vh;
     margin: 20px auto;
 }
 
@@ -81,6 +82,13 @@ body {
 </head>
 
 <body>
+
+<!-- 🎵 ÁUDIO (IGUAL AO SEU, SEM BOTÃO) -->
+<audio autoplay loop>
+    <source src="musica/sete-bilhoes.m4a" type="audio/mp4">
+    <source src="musica/sete-bilhoes.mp4" type="audio/mp4">
+    Seu navegador não suporta áudio.
+</audio>
 
 <div class="foto">
     <img src="fotos/foto3.jpg">
